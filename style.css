@@ -4,9 +4,11 @@
 
 
     --blu: #2b5364;
+    --azzurro: #59A8CA;
     --grigio: #ababab;
     --vetro: rgba(255, 255, 255, 0.7);
 
+    --gradient-mbp: linear-gradient(to right, var(--blu), var(--azzurro));
 }
 
 *, *::after, *::before{
@@ -123,6 +125,7 @@ li{
         height: 9px;
         background-image: url(img/freccia-icon.svg);
         pointer-events: none;
+        background-repeat: no-repeat;
 }
 
 .tendina-button ul{
@@ -211,6 +214,18 @@ li{
         border-radius: 100vw;
     }
 
+    .x-icon.icon-row-a{
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .x-icon.icon-row-b{
+        opacity: 0;
+    }
+
+    .x-icon.icon-row-c{
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
     .mobile-nav{
         display: flex;
         flex-direction: column;
@@ -246,11 +261,19 @@ li{
         transform: translateY(0);
     }
 
+    body.no-scroll{
+        overflow: hidden;
+    }
+
     .tendina-button{
         gap: 10px;
         border: 2px solid var(--blu);
-        padding: 10px 30px;
-        border-radius: 20px;
+        padding: 5px 40px;
+        border-radius: 100vw;
+    }
+
+    .tendina-button.button-opened{
+        border-radius: 30px;
     }
 
     .tendina-button ul{
@@ -272,12 +295,14 @@ li{
     }
 
     .tendina-button-text::after{
-        top: 22px;
-        right: 15px;
+        top: 17px;
+        right: 10px;
+        width: 18px;
+        height: 11.5px;
+        background-size: 100%;
     }
 
 }
-
 
 
 
@@ -363,7 +388,7 @@ li{
     margin-inline: auto;
     margin-top: 83vh;
     text-align: center;
-    margin-bottom: 1000px;
+    margin-bottom: 100px;
 
     h2{
         font-size: 3rem;
@@ -433,4 +458,302 @@ li{
 @media(max-width: 470px){
     .section-a-home{ margin-top: 43vh; h2{ margin-bottom: 125px;}}
 
+}
+
+
+/* FINE HOME */
+
+
+/* ALIMENTAZIONE */
+
+/* HERO */
+
+.hero-multi-cat{
+    position: relative;
+    max-width: 100%;
+    max-height: 50vh;
+
+    img{
+        width: 100vw;
+        height: 50vh;
+        object-fit: cover;
+    }
+
+    h1{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(30px, 10vw, 300px);
+        text-transform: uppercase;
+        text-align: center;
+        color: white;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+}
+
+/* SLIDER */
+
+.categoria-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 50px;
+    gap: 30px;
+
+    h2{
+        font-size: 3rem;
+        font-weight: 400;
+        text-align: center;
+    }
+}
+
+.slider-aziende{
+    --slideHeight: clamp(350px, 50vw ,480px);
+    --spanSize: clamp(3rem,2vw,7rem);
+    position: relative;
+    width: 100%;
+    max-width: calc(864px + var(--spanSize) );
+    height: calc(var(--slideHeight) + 45px);
+}
+
+span{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--spanSize);
+    color: var(--blu);
+    cursor: pointer;
+}
+
+.next{
+    right: 2.5%;
+}
+
+.prev{
+    left: 2.5%;
+}
+
+span:hover{
+    color: white;
+}
+
+span:hover::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--blu);
+    border-radius: 50%;
+    width: calc(1rem + var(--spanSize));
+    aspect-ratio: 1;
+    z-index: -1;
+}
+
+.next:hover::after{
+    right: -1rem;
+}
+
+.prev:hover::after{
+    left: -1rem;
+}
+
+.dots-container{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .dot{
+        display: inline-block;
+        margin-inline: 5px;
+        width: 20px;
+        aspect-ratio: 1;
+        border: 2px solid var(--blu);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .dot.active{
+        background: var(--blu);
+    }
+}
+
+.slider-container{
+    width: 80%;
+    max-width: 864px;
+    height: var(--slideHeight);
+    position: relative;
+    margin-inline: auto;
+    overflow: hidden;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
+
+.card-aziende{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    max-width: 864px;
+    height: var(--slideHeight);
+    border-radius: 30px;
+
+    img{
+        width: 100%;
+        min-height: 25%;
+        height: 50%;
+        max-height: 50vh;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 1100px){
+    .slider-container{
+        width: 100%;
+    }
+
+    span{
+        font-size: 50px;
+    }
+
+    span:hover{
+        color: white;
+    }
+
+    span:hover::after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--blu);
+        border-radius: 50%;
+        width: 60px;
+        aspect-ratio: 1;
+        z-index: -1;
+    }
+
+    .next{
+        right: -8%;
+    }
+    
+    .prev{
+        left: -8%;
+    }
+
+    .next:hover::after{
+        right: -15px;
+    }
+
+    .prev:hover::after{
+        left: -15px;
+    }
+}
+
+.card-aziende:not(.card-attiva){
+    top: 0;
+    left: -100%;
+}
+
+
+@keyframes next1 {
+
+    from{
+        left: 0%;
+    }
+
+    to{
+        left: -100%;
+    }
+    
+}
+
+@keyframes next2 {
+
+    from{
+        left: 100%;
+    }
+
+    to{
+        left: 0%;
+    }
+    
+}
+
+@keyframes prev1 {
+
+    from{
+        left: 0%;
+    }
+
+    to{
+        left: 100%;
+    }
+    
+}
+
+@keyframes prev2 {
+
+    from{
+        left: -100%;
+    }
+
+    to{
+        left: 0%;
+    }
+    
+}
+
+
+.card-aziende-text{
+    padding-block: 20px;
+    max-width: 90%;
+
+    h3{
+        font-size: 2.7rem;
+        font-weight: 500;
+    }
+
+    p{
+        margin-block: 7px 12px;
+    }
+
+    a{
+        font-size: 2.3rem;
+        font-weight: 500;
+        color: white;
+        background-image: var(--gradient-mbp);
+        padding: .15em .55em;
+        border-radius: 100vw;
+    }
+}
+
+
+/* FOOTER */
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: var(--gradient-mbp);
+    min-height: 125px;
+}
+
+.contatti-footer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+
+    h2{
+        font-size: 3rem;
+        font-weight: 500;
+    }
+
+    a{
+        font-size: clamp(10px, 2vw, 15px);
+    }
 }
