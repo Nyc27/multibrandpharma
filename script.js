@@ -58,66 +58,97 @@ function closeAllTendine() {
 window.addEventListener('load', function() {
     const sliderAziende = document.querySelectorAll('.slider-aziende');
 
-
     sliderAziende.forEach(slider => {
         let card = slider.querySelectorAll('.card-aziende');
         let next = slider.querySelector('.next');
         let prev = slider.querySelector('.prev');
-        let dots = slider.querySelectorAll('.dot');
         var counter = 0;
         let deleteInterval;
-
-        next.addEventListener('click', slideNext);
-        function slideNext(){
+    
+        let canClick = true;
+        let clickDelay = 900; // 900ms
+    
+        next.addEventListener('click', () => handleClick(slideNext));
+        prev.addEventListener('click', () => handleClick(slidePrev));
+    
+        function handleClick(slideFunction) {
+            if (canClick) {
+                canClick = false;
+                slideFunction();
+                resetAutoSliding();
+                setTimeout(() => {
+                    canClick = true;
+                }, clickDelay);
+            }
+        }
+    
+        function slideNext() {
             card[counter].style.animation = 'next1 800ms ease-in forwards';
-            if(counter >= card.length-1){
+            if (counter >= card.length - 1) {
                 counter = 0;
             } else {
                 counter++;
             }
             card[counter].style.animation = 'next2 800ms ease-in forwards';
-            indicators();
         }
-
-        prev.addEventListener('click', slidePrev);
-        function slidePrev(){
+    
+        function slidePrev() {
             card[counter].style.animation = 'prev1 800ms ease-in forwards';
-            if(counter == 0){
-                counter = card.length-1;
+            if (counter == 0) {
+                counter = card.length - 1;
             } else {
                 counter--;
             }
             card[counter].style.animation = 'prev2 800ms ease-in forwards';
-            indicators();
         }
-
-        function autoSliding (){
+    
+        if (window.innerWidth > 600) {
+            autoSliding();
+        }
+    
+        function autoSliding() {
             deleteInterval = setInterval(timer, 3500);
-            function timer(){
-                slideNext();
-                indicators();
-            }
         }
-        autoSliding();
-
-        slider.addEventListener('mouseover', function(){
-            clearInterval(deleteInterval);
-        })
-
-        slider.addEventListener('mouseout', autoSliding);
-        
-
-        slider.addEventListener('touchstart', function(){
-            clearInterval(deleteInterval);
-        })
-
-        slider.addEventListener('touchend', autoSliding);
-
-        function indicators(){
-            for( i = 0; i < dots.length; i++){
-                dots[i].className = dots[i].className.replace('active', '');
-            }
-            dots[counter].className+= ' active';
+    
+        function timer() {
+            slideNext();
         }
+    
+        function resetAutoSliding() {
+            clearInterval(deleteInterval);
+            autoSliding();
+        }
+
+        slider.addEventListener('mouseover', () => {
+            clearInterval(deleteInterval);
+        });
+    
+        slider.addEventListener('mouseout', () => {
+            resetAutoSliding();
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 600) {
+                resetAutoSliding();
+            } else {
+                clearInterval(deleteInterval);
+            }
+        });
     });
+})
+
+
+// SHOW MORE AZIENDA
+
+const containerShowMore = document.querySelectorAll('.container-info');
+
+containerShowMore.forEach(container => {
+        const showButton = container.querySelector('.show-button');
+        const contentToShow = container.querySelector('.info-azienda');
+
+        showButton.addEventListener('click', function (){
+            contentToShow.classList.toggle('show-more-azienda')
+        })
+
+        // contentToShow.classList.toggle('show-more-azienda')
 });
