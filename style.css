@@ -506,7 +506,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--blu);
+    background: blue;
     border-radius: 50%;
     width: calc(1rem + var(--spanSize));
     aspect-ratio: 1;
