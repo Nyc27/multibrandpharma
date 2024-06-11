@@ -427,6 +427,16 @@ li{
         border: 2px solid var(--blu);
         border-radius: 20px;
     }
+
+    .linkToCategories{
+        font-size: 2rem;
+        background: var(--blu);
+        color: white;
+        width: max-content;
+        margin-inline: auto;
+        padding: .1em .54em;
+        border-radius: 100vw;
+    }
 }
 
 @media(max-width: 1100px){
@@ -506,6 +516,26 @@ li{
         font-size: 3rem;
         font-weight: 400;
         text-align: center;
+    }
+}
+
+.lista-aziende{
+    width: max-content;
+    padding-block: 1em;
+    border-radius: 100vw;
+    background: var(--gradient-mbp);
+
+    h3{
+        display: inline-block;
+        font-size: 2.3rem;
+        font-weight: 400;
+        color: white;
+        white-space: nowrap;
+        margin-right: 20px;
+    }
+
+    h3:first-child{
+        margin-left: 20px;
     }
 }
 
@@ -752,6 +782,167 @@ span:hover::after{
 .card-solidea{
     img{
         object-position: top;
+    }
+}
+
+/* PAGINA AZINENDA */
+
+.hero-azienda{
+    position: relative;
+
+    h1{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(30px, 10vw, 300px);
+        text-transform: uppercase;
+        text-align: center;
+        color: white;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+
+    img{
+        width: 100%;
+        object-fit: cover;
+        min-height: 250px;
+        max-height: 60vh;
+    }
+}
+
+.main-azienda{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    margin-top: 40px;
+
+    h2{
+        position: relative;
+        font-size: 3rem;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    h2[class]{
+        cursor: pointer;
+    }
+
+    h2[class]::after{
+        content: '';
+        position: absolute;
+        width: 90%;
+        height: 1.5px;
+        background: rgb(104, 104, 104);
+        left: 50%;
+        bottom: -14px;
+        transform: translate(-50%);
+    }
+}
+
+.container-info-marchio,
+.container-info-acquisto{
+    max-width: 80%;
+}
+
+.info-azienda{
+    display: none;
+    
+    p{
+        line-height: 200%;
+    }
+}
+
+.info-acquisto{
+
+    p{
+        font-size: clamp(20px, 2vw, 25px);
+        text-align: center;
+    }
+}
+
+.info-marchio.show-more-azienda,
+.info-acquisto.show-more-azienda{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.listino-download{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 1.5em;
+    border-radius: 100vw;
+    width: max-content;
+    background-color: #c6c6c6;
+    
+    p a{
+        font-size: 3rem;
+    }
+
+    img{
+        max-width: 50px;
+    }
+}
+
+.offerte-slider{
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    width: 100vw;
+    max-width: none;
+    height: 600px;
+    margin-block: 100px;
+    background-image: var(--gradient-mbp);
+    overflow: scroll;
+
+    img{
+        max-width: 80%;
+        max-height: 90%;
+        border-radius: 20px;
+    }
+
+    img:first-child{
+        margin-left: 30px;
+    }
+
+    img:last-child{
+        margin-right: 30px;
+    }
+    
+}
+
+/* AZIENDE DETTAGLI */
+
+.hero-azienda .more-visible-hero-title{
+    text-shadow: none;
+    background-color: rgba(0,0,0, 0.5);
+    padding-inline: .4em;
+    backdrop-filter: blur(8px);
+    line-height: 100%;
+    border-radius: 100vw;
+}
+
+.hero-azienda .small-title{
+    width: max-content;
+    max-width: 70%;
+    font-size: clamp(20px, 8vw, 200px);
+}
+
+.info-marchio ul{
+
+    margin-left: 5%;
+
+    li{
+        display: list-item;
+        list-style: inside;
+        font-size: clamp(15px, 2vw, 20px);
     }
 }
 
