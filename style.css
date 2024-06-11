@@ -89,24 +89,14 @@
   li img:not(.logo) {
     position: relative;
     top: 1px;
-    width: 14px;
+    width: 1px;
   }
   .tendina-button {
     display: flex;
     flex-direction: column;
     position: relative;
   }
-  .tendina-button-text::after {
-    content: "";
-    position: absolute;
-    top: 10px;
-    right: -18px;
-    width: 14px;
-    height: 9px;
-    background-image: url(img/freccia-icon.svg);
-    pointer-events: none;
-    background-repeat: no-repeat;
-  }
+
   .tendina-button ul {
     display: none;
   }
@@ -512,6 +502,7 @@
     aspect-ratio: 1;
     z-index: -1;
   }
+  
   .next:hover::after {
     right: -1rem;
   }
@@ -783,6 +774,14 @@
   }
   .offerte-slider img:last-child {
     margin-right: 30px;
+  }
+
+  .offerte-slider h3{
+    font-size: 4vw;
+    color: white;
+    text-align: center;
+    margin-inline: auto;
+    max-width: 80%;
   }
   /* AZIENDE DETTAGLI */
   .hero-azienda {
